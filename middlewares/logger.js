@@ -1,0 +1,37 @@
+const fs = require('fs');
+const path = require('path');
+
+function logger(req, res, next){
+    const now = new Date(Date.now());
+
+    const logDate = now.toISOString().split('T')[0];
+
+    const logFile = path.join(__dirname, '..', 'logs', `${logDate}.log`);
+
+    const method = req.method;
+    const url = req.originalUrl;
+
+    res.on('finish', () => {
+        const statusCode = res.statusCode;
+
+        const logEntry = `${method} ${statusCode} ${url} ${now.toString()}\n`;
+
+        fs.mkdir(path.dirname(logFile), {recursive: true}, (dirError) => {
+
+            console.log(path.dirname(logFile));
+            if(dirError){
+                console.error("Couldn't create log directory", dirError);
+            } else {
+                fs.appendFile(logFile, logEntry, (fileError) => {
+                    if(fileError){
+                        console.error("Couldn't write in log file", fileError);
+                    }
+                });
+            }
+        });
+    });
+
+    next();
+};
+
+module.exports = logger;
