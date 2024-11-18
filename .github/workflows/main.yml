@@ -24,6 +24,7 @@ jobs:
 
           ssh -o StrictHostKeyChecking=no -i private_key.pem $SSH_USER@$SSH_HOST -p 5022 <<EOF
             source ./nodevenv/public_html/todo-api/18/bin/activate
+            cd ./public_html/todo-api
             git checkout master
             git pull
             npm install --omit=dev
