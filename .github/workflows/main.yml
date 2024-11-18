@@ -27,6 +27,7 @@ jobs:
             cd ./public_html/todo-api
             git fetch --all && git checkout --force origin/master
             npm install --omit=dev
+            npx sequelize-cli db:migrate
             /usr/sbin/cloudlinux-selector restart --json --interpreter nodejs --app-root=/home/zwecbgyf/public_html/todo-api/
           EOF
 
