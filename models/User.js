@@ -19,6 +19,9 @@ const User = sequelize.define('User', {
     display_name: {
         type: DataTypes.STRING(100),
         allowNull: false,
+    },
+    birth_date: {
+        type: DataTypes.DATEONLY
     }
 });
 
