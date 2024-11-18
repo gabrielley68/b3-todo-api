@@ -10,6 +10,6 @@ describe('Index router', () => {
         const response = await request(app).get('/');
 
         expect(response.status).toBe(200);
-        expect(response.text).toBe('Hello world v3');
+        expect(response.text).toBe('Hello world v4');
     });
 });
