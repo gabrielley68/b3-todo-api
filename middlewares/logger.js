@@ -6,7 +6,7 @@ function logger(req, res, next){
 
     const logDate = now.toISOString().split('T')[0];
 
-    const logFile = path.join(__dirname, '..', 'logs', `${logDate}.log`);
+    const logFile = path.join(process.env.LOGS_DIR, `${logDate}.log`);
 
     const method = req.method;
     const url = req.originalUrl;

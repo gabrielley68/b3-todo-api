@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin",
-    "generate_jwt_private_key": "openssl rand -base64 32"
+    "generate_jwt_private_key": "openssl rand -base64 32",
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -19,6 +20,8 @@
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.6.2"
+    "jest": "^29.7.0",
+    "sequelize-cli": "^6.6.2",
+    "supertest": "^7.0.0"
   }
 }
