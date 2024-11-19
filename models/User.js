@@ -22,6 +22,9 @@ const User = sequelize.define('User', {
     },
     birth_date: {
         type: DataTypes.DATEONLY
+    },
+    comment: {
+        type: DataTypes.TEXT
     }
 });
 
